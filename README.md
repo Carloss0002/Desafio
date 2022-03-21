@@ -1,4 +1,4 @@
-<h1>Formulario</h1>
+<h1>Formulario ℹ️ </h1>
 
 <p>Desafio Front end da Empresa [Bempaggo](https://www.bempaggo.com.br/), onde iremos criar um formulario de compra de adesivos</p>
 
@@ -11,11 +11,11 @@
 - Html5
 - Css3
 
-<h2>Resumo do Projeto</h2>
+<h2>Resumo do Projeto 📖 </h2>
 
 <p>O produto é pedido na Home e por parametros do Router o pedido é enviado para a page de Confirmação, onde podem ser conferidos e alterados. Quando enviado a page retorna para a Home, onde outro pedido pode ser feito</p>
 
-<h2>Documentenções onde duvidas foram tiradas</h2>
+<h2>Documentenções onde duvidas foram tiradas 📉 </h2>
 
 - Vue cli (https://cli.vuejs.org/guide/)
 - Javascript (https://www.w3schools.com/)
