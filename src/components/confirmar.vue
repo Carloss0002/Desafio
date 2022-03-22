@@ -26,7 +26,6 @@ export default {
    name: 'Confirmar', 
    props:['Produto', 'Total'],
    }
-
 </script>
 
 <style scoped>

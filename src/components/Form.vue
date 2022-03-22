@@ -1,11 +1,11 @@
 <template>
   <div id="Home">
       <!--Inicio Container-->
-        <div class="capsulaFormulario"> 
+        <div class="capsulaFormulario text-center"> 
             <!--Inicio Formulário-->
-              <div class="adesivos">
+              <div class="adesivos mb-5">
                  <h2>Quais Adesivos</h2> 
-                    <div class="formulario">
+                    <div class="formulario" >
                             
                         <label>
                           <input type="checkbox"  value="react" v-model="produtos">
@@ -13,12 +13,12 @@
                         </label>
                             
                         <label>
-                          <input type="checkbox"  value="vue" v-model="produtos">
+                          <input class="ml-3" type="checkbox"  value="vue" v-model="produtos">
                             Vue
                         </label>
         
                         <label for="Angular">    
-                         <input type="checkbox" id="Angular" value="angular" v-model="produtos">
+                         <input type="checkbox" class="ml-3" id="Angular" value="angular" v-model="produtos">
                             Angular
                         </label>
                     </div>
@@ -26,13 +26,13 @@
                     <!--Fim Formulario-->
                     
                     <!--Area do contador de produtos-->
-                    <div class="quantidade">
+                    <div class="quantidade mb-3">
         
                     <h2>Quantos adesivos de cada?</h2>
                         
-                        <button @click="quantidade++">+</button>
-                        <input type="number" min="1" :placeholder="quantidade" disabled>
-                        <button v-on:click="quantidade--">-</button>
+                        <button class="btn" v-on:click="decrementarQuantidade()" :disabled="!quantidade">-</button>
+                         <input type="number" min="1" :placeholder="quantidade" disabled>
+                        <button class="btn" @click="incrementarQuantidade()">+</button>
                         
                         
                         <p id="res"></p>
@@ -43,13 +43,13 @@
                     <div class="areaTexto"> 
                         <label for="texto">Alguma Observação?</label><br>
                         
-                        <textarea id="texto" cols="170" rows="10" placeholder="Alguma dúvida? Recado?" v-model="texto"></textarea>
+                        <textarea id="texto" class="wPorcentagem" rows="10" placeholder="Alguma dúvida? Recado?" v-model="texto"></textarea>
                     </div>
                     
                     <!--Button enviar-->
                     <div class="botaoEnviar">
             
-                        <button @click="enviarConteudo">Enviar</button>
+                        <button class="btn" :disabled="!produtos.length" @click="enviarConteudo">Enviar</button>
                         
                     </div>
                     
@@ -65,22 +65,29 @@ export default {
               produtos: [],
               quantidade: 0,
               texto: '',
+              
+              
              
           }
       },
       methods:{
-          enviarConteudo(){
-               
-               /*Variavel texto*/
-               let texto = document.getElementById('res') 
-               /*if Reduzido Para economizar linhas de Codigo*/ 
-               if(this.produtos === [] || this.quantidade === 0 || this.quantidade < 0){
+          incrementarQuantidade(){
+              this.quantidade++
+          },
+          decrementarQuantidade(){
+             if(this.quantidade > 0){
+                this.quantidade--
+             }
+          },
+          enviarConteudo(){ 
+           let texto = document.getElementById('res')    
+           if(this.quantidade == 0){
+             texto.innerText = 'Este campo é muito importante'
+           }   
+           else{
+             this.$router.push(`/Confirmar/${this.produtos}/${this.quantidade}`)         
+             } 
                    
-                   texto.innerText='Algo está errado. Por Favor Confira seu Pedido'
-
-                   } else{
-                       this.$router.push(`/Confirmar/${this.produtos}/${this.quantidade}`)
-                       }
           }
       }
 }
@@ -98,14 +105,10 @@ export default {
     }
     button{
         background: rgb(47, 54, 118);
-        border: none;
         color: white;
-        height: 20px;
-        width: 30px;
-        font-weight: 900;
     }
     input{
-        width: 25px;
+        width: 30px;
         height: 15px;
         text-align: center;
     }
@@ -113,6 +116,10 @@ export default {
     input[type=number]::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
+    }
+    input[type=number]{
+        width: 40px;
+        height: 35px;
     }
     textarea{
         margin: 15px;
@@ -122,9 +129,13 @@ export default {
         color: red;
         font-weight: 300;
     }
+    .wPorcentagem{
+        width: 90%;
+    }
     .capsulaFormulario{
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: space-around;
     }
     .adesivos{
