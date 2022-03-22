@@ -1,5 +1,6 @@
 <h1>Formulario ℹ️ </h1>
 
+![Captura de Tela (2)](https://user-images.githubusercontent.com/93801199/159392856-de15d371-f88a-476a-8370-f5440c2b6859.png)
 
 
 <p>Desafio Front end da Empresa [Bempaggo](https://www.bempaggo.com.br/), onde iremos criar um formulario de compra de adesivos</p>
